@@ -44,7 +44,11 @@ class Server {
         this.app.use(this.basePath + '/user', userRoutes);
     }
 
-    start() { }
+    start(port = process.env.PORT | 3000) {
+        this.app.listen(port, () => {
+            `Server running on port ${port}`
+        })
+    }
 
 }
 
