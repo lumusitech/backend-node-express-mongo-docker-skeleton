@@ -7,11 +7,15 @@ class Server {
         this.setStatics();
         this.setDB();
         this.setMiddlewares();
-        this.basePath='/api/v1'
+        this.basePath = '/api/v1'
         this.setRoutes();
     }
 
-    setConfig() { }
+    setConfig() {
+        if (process.env.NODE_ENV !== 'production') {
+            require('dotenv').config();
+        }
+    }
 
     setStatics() { }
 
