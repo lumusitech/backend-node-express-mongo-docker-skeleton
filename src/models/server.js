@@ -5,6 +5,7 @@ const compression = require('compression');
 const morgan = require('morgan');
 
 const mongoConnect = require('../db/config.mongodb');
+const userRoutes = require('../routes/user.routes');
 
 class Server {
     constructor() {
@@ -39,7 +40,9 @@ class Server {
         this.app.use(morgan('dev'));
     }
 
-    setRoutes() { }
+    setRoutes() {
+        this.app.use(this.basePath + '/user', userRoutes);
+    }
 
     start() { }
 
