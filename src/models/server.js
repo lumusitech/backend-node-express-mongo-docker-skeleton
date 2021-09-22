@@ -17,7 +17,9 @@ class Server {
         }
     }
 
-    setStatics() { }
+    setStatics() {
+        this.app.use(express.static('public'));
+    }
 
     setDB() { }
 
