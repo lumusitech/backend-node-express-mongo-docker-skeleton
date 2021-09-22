@@ -1,5 +1,7 @@
 const express = require('express');
 
+const mongoConnect = require('../db/config.mongodb');
+
 class Server {
     constructor() {
         this.app = express();
@@ -21,7 +23,9 @@ class Server {
         this.app.use(express.static('public'));
     }
 
-    setDB() { }
+    async setDB() {
+        await mongoConnect();
+    }
 
     setMiddlewares() { }
 
