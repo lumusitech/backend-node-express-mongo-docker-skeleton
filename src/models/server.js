@@ -1,4 +1,8 @@
 const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const compression = require('compression');
+const morgan = require('morgan');
 
 const mongoConnect = require('../db/config.mongodb');
 
@@ -27,7 +31,13 @@ class Server {
         await mongoConnect();
     }
 
-    setMiddlewares() { }
+    setMiddlewares() {
+        this.app.use(express.json());
+        this.app.use(cors());
+        this.app.use(helmet());
+        this.app.use(compression());
+        this.app.use(morgan('dev'));
+    }
 
     setRoutes() { }
 
