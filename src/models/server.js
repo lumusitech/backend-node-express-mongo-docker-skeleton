@@ -46,7 +46,7 @@ class Server {
 
     start(port = process.env.PORT | 3000) {
         this.app.listen(port, () => {
-            `Server running on port ${port}`
+            console.log(`Server running on port ${port}`);
         })
     }
 
