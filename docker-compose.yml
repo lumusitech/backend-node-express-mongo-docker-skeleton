@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: api
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    restart: always
+    environment:
+      - PORT=3000
+      - MONGO_URI="mongodb://database/apirest"
+      - APP_NAME="API REST Lumusitech"
+
+  database:
+    container_name: apiDB
+    image: mongo:5
+    ports:
+      - "27017:27017"
+    logging:
+      driver: none 
